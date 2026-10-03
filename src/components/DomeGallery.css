@@ -1,0 +1,102 @@
+.dome-gallery-container {
+  height: clamp(380px, 60vh, 460px);
+  background: radial-gradient(circle at center, #23120b 0%, #140905 100%);
+  perspective: 900px;
+  touch-action: none;
+}
+
+@media (min-width: 640px) {
+  .dome-gallery-container {
+    height: 480px;
+    perspective: 950px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dome-gallery-container {
+    height: 540px;
+    perspective: 1000px;
+  }
+}
+
+.dome-gallery-viewport {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+.dome-sphere {
+  width: 0;
+  height: 0;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.05s linear;
+}
+
+/* Card wrapper dimensions - perfectly proportioned and centered */
+.dome-item-wrapper {
+  position: absolute;
+  top: -72px;
+  left: -55px;
+  width: 110px;
+  height: 145px;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  transition: filter var(--transition-duration, 0.3s) ease;
+}
+
+@media (min-width: 640px) {
+  .dome-item-wrapper {
+    top: -85px;
+    left: -65px;
+    width: 130px;
+    height: 170px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dome-item-wrapper {
+    top: -95px;
+    left: -72px;
+    width: 145px;
+    height: 190px;
+  }
+}
+
+.dome-item-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dome-item-wrapper:hover .dome-item-inner {
+  transform: scale(1.06);
+  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.8), 0 0 15px rgba(226, 190, 94, 0.4);
+}
+
+.dome-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: var(--overlay-color, rgba(28, 16, 12, 0.35));
+  backdrop-filter: blur(var(--overlay-blur, 0px));
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.dome-item-wrapper:hover .dome-overlay {
+  opacity: 0.05;
+}
+
+.dome-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 6px 8px;
+  background: linear-gradient(to top, rgba(20, 9, 5, 0.95) 0%, rgba(20, 9, 5, 0.4) 70%, transparent 100%);
+  pointer-events: none;
+}

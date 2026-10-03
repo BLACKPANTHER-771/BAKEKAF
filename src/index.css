@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", "Cormorant Garamond", Georgia, serif;
+  --font-display: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-script: "Great Vibes", "Pinyon Script", "Alex Brush", cursive;
+
+  /* Cream / Off-white palette */
+  --color-cream-50: #FAF7F2;
+  --color-cream-100: #F4EFEB;
+  --color-cream-200: #ECE2D7;
+  --color-cream-300: #E0CEBE;
+  --color-cream-400: #CEB59F;
+  --color-cream-500: #B89980;
+
+  /* Espresso / Rich Chocolate palette */
+  --color-espresso-50: #F7F4F2;
+  --color-espresso-100: #ECE3DE;
+  --color-espresso-200: #DAC7BD;
+  --color-espresso-300: #BFA598;
+  --color-espresso-400: #9C7969;
+  --color-espresso-600: #5A392B;
+  --color-espresso-700: #462A1F;
+  --color-espresso-800: #331D15;
+  --color-espresso-900: #23130D;
+  --color-espresso-950: #160B07;
+
+  /* Caramel / Golden Warmth */
+  --color-caramel-50: #FCF8F2;
+  --color-caramel-100: #F7ECD9;
+  --color-caramel-200: #EFD6B2;
+  --color-caramel-300: #E4BC87;
+  --color-caramel-400: #D39F5D;
+  --color-caramel-500: #B87B40;
+  --color-caramel-600: #9E612E;
+  --color-caramel-700: #804B23;
+  --color-caramel-800: #653A1D;
+
+  /* Terracotta / Baked Warmth */
+  --color-terracotta-100: #FCECE8;
+  --color-terracotta-200: #F7D4CC;
+  --color-terracotta-300: #EFB3A4;
+  --color-terracotta-400: #E18972;
+  --color-terracotta-500: #C8654B;
+  --color-terracotta-600: #AB4B33;
+  --color-terracotta-700: #8C3924;
+
+  /* Gold / Champagne Accents */
+  --color-gold-200: #F6E6B8;
+  --color-gold-300: #EDD48E;
+  --color-gold-400: #DDBE61;
+  --color-gold-500: #C29D38;
+  --color-gold-600: #A07F24;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-cream-200);
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  body {
+    background-color: var(--color-cream-50);
+    color: var(--color-espresso-950);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: var(--font-serif);
+    letter-spacing: -0.015em;
+  }
+}
+
+/* Custom subtle animations */
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+}
+
+.animate-float {
+  animation: floatGentle 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+/* Custom glassmorphism / warm card effects */
+.warm-card {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(224, 206, 190, 0.5);
+  box-shadow: 0 10px 30px -10px rgba(35, 19, 13, 0.05), 0 4px 6px -2px rgba(35, 19, 13, 0.02);
+}
+
+.warm-card-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.warm-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(35, 19, 13, 0.1), 0 0 0 1px rgba(184, 123, 64, 0.25);
+}
+
+/* Hide scrollbar for category tabs */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Respect user preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
