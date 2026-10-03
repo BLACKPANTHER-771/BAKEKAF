@@ -33,26 +33,4 @@ A premium, production-ready frontend website demo built for artisanal bakeries, 
 
 ---
 
-## 🚀 Getting Started
 
-### Development
-```bash
-npm install
-npm run dev
-```
-Open [http://localhost:5173/](http://localhost:5173/) in your browser.
-
-### Production Build
-```bash
-npm run build
-```
-
----
-
-## 🎨 Customizing for a New Client
-
-To deploy this website for any new bakery or café client:
-1. Open [`src/data/bakeryData.js`](src/data/bakeryData.js).
-2. Update the `business` object (`name`, `phone`, `whatsapp`, `address`, `googleMapsUrl`, `paymentLink`).
-3. Update or add items to `menuItems`, `bestSellers`, `offers`, `gallery`, and `reviews`.
-4. Run `npm run build` to output the optimized static build in `dist/`.
